@@ -76,7 +76,7 @@ Usare librerie PHP per validazione più potente (es. Symfony Validator, Respect/
     // fai questo solo dopo il lancio del form
 
     
-    if ($_SERVER["REQUEST_METHOD"] == "GET" && !empty($_GET)) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST)) {
         function sanitize_input($data, $key, ) {
             if ($key === "nome") {
                 if (preg_match("/^[A-Za-z\s]+$/", $data) === 0) {
@@ -109,9 +109,9 @@ Usare librerie PHP per validazione più potente (es. Symfony Validator, Respect/
             }
             return $data;
         }
-        $nome = isset($_GET["name"]) ? sanitize_input($_GET["name"], "nome") : "";
-        $email = isset($_GET["email"]) ? sanitize_input($_GET["email"], "email") : "";
-        $notes = isset($_GET["notes"]) ? sanitize_input($_GET["notes"], "notes") : "";
+        $nome = isset($_POST["name"]) ? sanitize_input($_POST["name"], "nome") : "";
+        $email = isset($_POST["email"]) ? sanitize_input($_POST["email"], "email") : "";
+        $notes = isset($_POST["notes"]) ? sanitize_input($_POST["notes"], "notes") : "";
         
         // preg_match("/^[A-Za-z\s]+$/", $nome) or die("Nome non valido. Usa solo lettere e spazi.");
         
@@ -128,7 +128,7 @@ Usare librerie PHP per validazione più potente (es. Symfony Validator, Respect/
     }
     
     ?>
-    <form action="" method="GET" target="_blank" onsubmit="return validateFormJS()">
+    <form action="" method="POST" target="_blank" onsubmit="return validateFormJS()">
         <label for="name">Nome: </label><br>
         <input type="text" id="name" name="name" required pattern="[A-Za-z\s]+" title="Solo lettere e spazi" placeholder="Mario Rossi"><br><br>
         
