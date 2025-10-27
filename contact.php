@@ -111,6 +111,15 @@ Usare librerie PHP per validazione più potente (es. Symfony Validator, Respect/
         $email = isset($_POST["email"]) ? sanitize_input($_POST["email"], "email") : "";
         $notes = isset($_POST["notes"]) ? sanitize_input($_POST["notes"], "notes") : "";
 
+        
+        // preg_match("/^[A-Za-z\s]+$/", $nome) or die("Nome non valido. Usa solo lettere e spazi.");
+        
+        // filter_var($email, FILTER_VALIDATE_EMAIL) or die("Email non valida.");
+        
+        // if (strlen($notes) > 300) {
+        //     print_r("Il messaggio non può superare i 300 caratteri.");
+        // }
+
         if ($nome !== "" && $email !== "" && $notes !== "") {
             print_r("Grazie, i tuoi dati sono stati inviati.<br><br><br>");
         }
@@ -173,4 +182,5 @@ Usare librerie PHP per validazione più potente (es. Symfony Validator, Respect/
     </script>                                                   
 </body>
 </html>
+
 
