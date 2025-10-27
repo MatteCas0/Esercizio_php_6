@@ -121,13 +121,15 @@ Usare librerie PHP per validazione più potente (es. Symfony Validator, Respect/
         // }
 
         if ($nome !== "" && $email !== "" && $notes !== "") {
-            print_r("Grazie, i tuoi dati sono stati inviati.<br><br><br>");
+            header("Location: done.php");
+            exit();
+            //print_r("Grazie, i tuoi dati sono stati inviati.<br><br><br>");
         }
         
     }
     
     ?>
-    <form action="" method="POST" target="_blank" onsubmit="return validateFormJS()">
+    <form action="done.php" method="POST" target="_self" novalidate onsubmit="return validateFormJS()">
         <label for="name">Nome: </label><br>
         <input type="text" id="name" name="name" required pattern="[A-Za-z\s]+" title="Solo lettere e spazi" placeholder="Mario Rossi"><br><br>
         
